@@ -1,0 +1,82 @@
+<html>
+  <head>
+      <meta charset="utf-8" />
+      
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+<style>
+  body{
+overflow: hidden;
+color:rgb(40, 40, 224);
+text-align: center;
+font-size: 20px;
+background-image: url("davi.png");
+margin-top: 100px;
+background-position: center;
+background-size: cover;
+
+}
+input{
+background-color: rgb(0, 0, 0);
+color: rgb(255, 0, 0);
+margin: 20px;
+border-radius: 20px;
+text-align: center;
+font-size: 20px;
+width:80%
+}
+button{
+background-color: rgb(0, 0, 0);
+border-radius: 20px;
+font-size: 20px;
+padding: 5px;
+color: rgb(255, 0, 0);
+}
+</style>
+  </head>
+  <body>
+    <title>MDC</title>
+    
+      <form id="formulario">
+          <label for="numero1"> Primeiro Número</label>
+          <input name="numero1" id="numero-1" type="number" placeholder="insira aqui"/>
+          <br />
+          <br />
+          <label for="numero2">Segundo Número</label>
+          <input name="numero2" id="numero-2" type="number" placeholder="insira aqui"/>
+          <br />
+          <button id="botao">Calcular MDC</button>
+          <br />
+          <br />
+          <div id="resposta">
+          </div>
+      </form>
+  </body>
+  <script>
+    var botaoCalcular = document.querySelector("#botao");
+    botaoCalcular.addEventListener("click", function(event){
+      event.preventDefault();
+      var form = document.querySelector("#formulario");
+      var n1 = form.numero1.value;
+      var n2 = form.numero2.value;
+      resposta.textContent = "O MDC dos dois números é " + mdc(n1, n2);
+    });
+       function mdc(n1, n2) {
+    while (n2 !== 0) {
+        var r = n1 % n2;
+        n1 = n2;
+        n2 = r;
+    }
+    return n1;
+}
+//Calcula o MDC de uma lista de números
+function mdcLista(numberList) {
+    var mdcResultado = numberList[0];
+    var i;
+    for (i = 1; i < numberList.length; i++) {
+        mdcResultado = mdc(mdcResultado, numberList[i]);
+    }
+    return mdcResultado;
+}
+  </script>
+</html>
